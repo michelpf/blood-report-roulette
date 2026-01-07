@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-const VALID_IDS = ["12345678", "PATIENT01", "TEST2024", "SKEANURE"];
+const VALID_IDS = ["12345678", "PATIENT01", "TEST2024", "JOHNSMITH62"];
 
 const Index = () => {
   const [step, setStep] = useState(1);
