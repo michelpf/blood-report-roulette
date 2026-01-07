@@ -14,6 +14,7 @@ const Index = () => {
   const resultsRef = useRef<HTMLDivElement>(null);
   const [loadingPage, setLoadingPage] = useState(0);
   const PAGES_TO_LOAD = 500;
+  const [submitClicks, setSubmitClicks] = useState(0);
 
   // While isLoading is true, animate loadingPage from 1..PAGES_TO_LOAD over the same duration as the loader
   useEffect(() => {
@@ -87,7 +88,18 @@ const Index = () => {
       setError("Error Code: TRM_001 - Required field");
       return;
     }
+    // Require the user to click Submit 4 times before proceeding
+    const next = submitClicks + 1;
+    setSubmitClicks(next);
+    if (next < 4) {
+      // show English message until user reaches 4 clicks
+      setError("The exam is not ready yet. Please try again.");
+      return;
+    }
+
+    // On the 4th click proceed
     setError("");
+    setSubmitClicks(0);
     setIsLoading(true);
     // progress animation runs for 6000ms; keep loader visible 2s more before showing report
     setTimeout(() => {
@@ -602,7 +614,7 @@ LIMITATIONS OF TESTING:
       <div className="bg-[#336699] text-white px-4 py-2">
         <div className="flex items-center gap-2">
           <span className="text-lg">■</span>
-          <span className="text-sm font-bold">BLOOD TEST SEARCH SYSTEM</span>
+          <span className="text-sm font-bold">LABORATORY TEST SYSTEM</span>
           <span className="text-xs ml-4">v2.4.1</span>
         </div>
       </div>
