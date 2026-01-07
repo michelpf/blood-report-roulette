@@ -1,73 +1,40 @@
-# Welcome to your Lovable project
+# Blood Report Roulette — Test System
 
-## Project info
+This repository contains a demo application that simulates a laboratory report search and preview system (blood-report-roulette). Its purpose is to demonstrate common challenges and behaviors when working with diagnostic reports (legacy formats, pagination, dot-matrix print preview, loading large multi-page documents, etc.).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+WARNING: This application is a test/demo system only. All data is fictional and does not represent real patients.
 
-## How can I edit this code?
+## Purpose
+- Demonstrate UX and performance issues when viewing very large reports (many pages, dot-matrix print styling, page navigation).
+- Provide a controlled environment for UI testing, print-preview behavior, and simulated PDF export.
 
-There are several ways of editing your application.
+## Quick operation guide
+1. Start the project's development server (Vite). Example:
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
+# or use your preferred command: bun dev / pnpm dev
 ```
 
-**Edit a file directly in GitHub**
+2. Open the app in your browser (typically http://localhost:5173).
+3. Follow the authentication flow in the UI:
+   - Step 1: enter a valid User ID (see below) and click Continue.
+   - Step 2: enter an Access Key (any value works for this demo) and confirm.
+   - Step 3: accept the terms and click Submit.
+4. The system will show a loading animation that simulates loading pages (up to 500). After loading completes, a dot-matrix style preview of the report will appear.
+5. Use the controls under the preview to navigate pages, print, or export (simulated).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available demo User IDs
+- `12345678`
+- `PATIENT01`
+- `TEST2024`
 
-**Use GitHub Codespaces**
+NOTE: In this demo environment any Access Key / password will be accepted — the focus is on front-end behavior and print preview.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Additional notes
+- The project uses Vite + React + Tailwind CSS.
+- Files inside `src/pages` are used to count/generate example pages for the loader.
+- Do not use this code in production without removing demo data and implementing real authentication.
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+If you'd like, I can add production build instructions, automated test examples, or a script to generate sample PDFs.
+Working IDs: 12345678, PATIENT01, TEST2024 (any password works)

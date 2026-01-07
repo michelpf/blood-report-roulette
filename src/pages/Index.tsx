@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-const VALID_IDS = ["12345678", "PATIENT01", "TEST2024"];
+const VALID_IDS = ["12345678", "PATIENT01", "TEST2024", "SKEANUR"];
 
 const Index = () => {
   const [step, setStep] = useState(1);
@@ -12,6 +12,45 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const [loadingPage, setLoadingPage] = useState(0);
+  const PAGES_TO_LOAD = 500;
+
+  // While isLoading is true, animate loadingPage from 1..PAGES_TO_LOAD over the same duration as the loader
+  useEffect(() => {
+    if (!isLoading) {
+      setLoadingPage(0);
+      return;
+    }
+
+    const duration = 6000; // matches handleStep3 timeout
+    const start = Date.now();
+
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const pct = Math.min(1, elapsed / duration);
+      const page = Math.min(PAGES_TO_LOAD, Math.max(1, Math.ceil(pct * PAGES_TO_LOAD)));
+      setLoadingPage(page);
+      if (elapsed >= duration) {
+        // ensure final state
+        setLoadingPage(PAGES_TO_LOAD);
+        return true;
+      }
+      return false;
+    };
+
+    // Run at ~60fps
+    let rafId: number | null = null;
+    const frame = () => {
+      if (!tick()) {
+        rafId = requestAnimationFrame(frame);
+      }
+    };
+    frame();
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [isLoading]);
 
   const handleStep1 = () => {
     if (!userId) {
@@ -50,10 +89,11 @@ const Index = () => {
     }
     setError("");
     setIsLoading(true);
+    // progress animation runs for 6000ms; keep loader visible 2s more before showing report
     setTimeout(() => {
       setIsLoading(false);
       setStep(4);
-    }, 3000);
+    }, 8000);
   };
 
   const generateDotMatrixResults = () => {
@@ -645,6 +685,18 @@ LIMITATIONS OF TESTING:
               {isLoading && (
                 <div className="text-center py-8">
                   <div className="text-sm text-[#666]">Processing request...</div>
+                  <div className="text-sm text-[#666]">Loading Page {loadingPage} of {PAGES_TO_LOAD}</div>
+                  <div className="mx-auto mt-3 w-128 h-2 bg-[#eee] border border-black overflow-hidden">
+                    <div
+                      role="progressbar"
+                      aria-valuemin={1}
+                      aria-valuemax={PAGES_TO_LOAD}
+                      aria-valuenow={loadingPage}
+                      aria-label={`Loading page ${loadingPage} of ${PAGES_TO_LOAD}`}
+                      className="h-2 bg-[#36a3f7]"
+                      style={{ width: `${Math.round((loadingPage / PAGES_TO_LOAD) * 100)}%` }}
+                    />
+                  </div>
                   <div className="text-xs text-[#999] mt-2">Please do not close this window or press the back button.</div>
                   <div className="text-xs text-[#999] mt-1">This may take up to 5 minutes.</div>
                 </div>
