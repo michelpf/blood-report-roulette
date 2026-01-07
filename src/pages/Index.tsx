@@ -111,12 +111,12 @@ const Index = () => {
   const generateDotMatrixResults = () => {
     const testDate = new Date(Date.now() - 86400000 * 14);
     const patientAge = 42;
-    
+
     return (
       <div className="dot-matrix paper-feed p-6 text-xs overflow-auto max-h-[600px] border border-[#999]" ref={resultsRef}>
         {/* Header */}
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     CENTRAL LABORATORY DIAGNOSTIC SERVICES
                       AUTOMATED BLOOD ANALYSIS REPORT
                               CONFIDENTIAL
@@ -132,9 +132,9 @@ PAPER: CONTINUOUS FEED #442-A (REMAINING: 847 SHEETS)
 --------------------------------------------------------------------------------
 
 PATIENT ID............: ${userId.toUpperCase()}
-PATIENT NAME..........: [REDACTED FOR PRIVACY - SEE FORM BT-881A]
-DATE OF BIRTH.........: [REDACTED] (AGE: ${patientAge} YEARS)
-GENDER................: [REDACTED]
+PATIENT NAME..........: JOHN SMITH
+DATE OF BIRTH.........: 03/11/1962
+GENDER................: MALE
 BLOOD TYPE............: O+ (CONFIRMED VIA TEST #BT-7721)
 COLLECTION DATE.......: ${testDate.toLocaleDateString()} ${testDate.toLocaleTimeString()}
 COLLECTION SITE.......: LEFT ARM, ANTECUBITAL FOSSA
@@ -154,10 +154,12 @@ QC STATUS.............: PASSED (LOT: QC-2024-0142)
 `}
         </pre>
 
+
+
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     COMPLETE BLOOD COUNT (CBC) WITH DIFFERENTIAL
 ================================================================================
 
@@ -166,16 +168,16 @@ TEST                    RESULT      UNITS       REFERENCE RANGE     FLAG
         </pre>
 
         <pre className="whitespace-pre-wrap abnormal-high">
-{`IRON, SERUM             287         ug/dL       60-170              **HIGH**`}
+          {`IRON, SERUM             287         ug/dL       60-170              **HIGH**`}
         </pre>
         <pre className="whitespace-pre-wrap abnormal-high">
-{`FERRITIN                892         ng/mL       20-250              **HIGH**`}
+          {`FERRITIN                892         ng/mL       20-250              **HIGH**`}
         </pre>
         <pre className="whitespace-pre-wrap abnormal-high">
-{`TRANSFERRIN SATURATION  68          %           20-50               **HIGH**`}
+          {`TRANSFERRIN SATURATION  68          %           20-50               **HIGH**`}
         </pre>
         <pre className="whitespace-pre-wrap">
-{`TIBC                    245         ug/dL       250-400             NORMAL
+          {`TIBC                    245         ug/dL       250-400             NORMAL
 HEMOGLOBIN              14.2        g/dL        13.5-17.5           NORMAL
 HEMATOCRIT              42.1        %           38.8-50.0           NORMAL
 RBC COUNT               4.82        M/uL        4.35-5.65           NORMAL
@@ -196,7 +198,7 @@ MPV                     9.8         fL          7.5-11.5            NORMAL`}
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     REFERENCE RANGES BY AGE GROUP - IRON STUDIES
 ================================================================================
 
@@ -206,7 +208,7 @@ NEWBORN (0-1 MO)        100-250         25-200              100-400
 INFANT (1-12 MO)        40-100          50-200              100-400
 CHILD (1-12 YRS)        50-120          7-140               250-400
 ADOLESCENT (13-18 YRS)  50-160          12-150              250-400
-ADULT MALE (19-64 YRS)  60-170          20-250              250-400    <-- PATIENT
+ADULT MALE (19-64 YRS)  60-170          20-250              250-400 
 ADULT FEMALE (19-64 YRS)50-150          10-150              250-400
 ELDERLY (65+ YRS)       40-150          15-200              200-370
 
@@ -216,7 +218,7 @@ ELDERLY (65+ YRS)       40-150          15-200              200-370
 
 *** ATTENTION REVIEWING PHYSICIAN ***
 
-PATIENT SHOWS ELEVATED IRON MARKERS CONSISTENT WITH POSSIBLE:
+PATIENT SHOWS ELEVATED IRON MARKERS (** HEAVY METAL **) CONSISTENT WITH POSSIBLE:
 - HEMOCHROMATOSIS (HEREDITARY OR ACQUIRED)
 - CHRONIC LIVER DISEASE
 - MULTIPLE BLOOD TRANSFUSIONS
@@ -239,7 +241,7 @@ SEE ATTACHED: FORM HEM-442 (HEMOCHROMATOSIS SCREENING PROTOCOL)
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                          COMPREHENSIVE METABOLIC PANEL
 ================================================================================
 
@@ -256,11 +258,11 @@ CO2                     24          mEq/L       23-29               NORMAL
 CALCIUM                 9.4         mg/dL       8.5-10.5            NORMAL`}
         </pre>
         <pre className="whitespace-pre-wrap abnormal-high">
-{`AST (SGOT)              52          U/L         10-40               **HIGH**
+          {`AST (SGOT)              52          U/L         10-40               **HIGH**
 ALT (SGPT)              67          U/L         7-56                **HIGH**`}
         </pre>
         <pre className="whitespace-pre-wrap">
-{`ALKALINE PHOSPHATASE    78          U/L         44-147              NORMAL
+          {`ALKALINE PHOSPHATASE    78          U/L         44-147              NORMAL
 BILIRUBIN, TOTAL        0.9         mg/dL       0.1-1.2             NORMAL
 PROTEIN, TOTAL          7.2         g/dL        6.0-8.3             NORMAL
 ALBUMIN                 4.1         g/dL        3.4-5.4             NORMAL
@@ -270,7 +272,7 @@ GLOBULIN                3.1         g/dL        2.0-3.5             NORMAL
                     NOTE: ELEVATED LIVER ENZYMES
 --------------------------------------------------------------------------------
 
-ELEVATED AST/ALT MAY BE ASSOCIATED WITH:
+ELEVATED AST/ALT MAY BE ASSOCIATED WITH (** HIGH BAND **):
 - IRON OVERLOAD (SEE ABOVE - CORRELATION SUSPECTED)
 - HEPATOCELLULAR INJURY
 - NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD)
@@ -284,8 +286,32 @@ REFERENCE: ACG CLINICAL GUIDELINE 2017, TABLE 3
 
         <div className="perforation"></div>
 
+
+
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
+        AMBULONECROENCEPHALOPATHY PANEL
+================================================================================
+
+TEST                     RESULT      UNITS       REFERENCE RANGE     FLAG
+--------------------------------------------------------------------------------`}
+        </pre>
+        <pre className="whitespace-pre-wrap abnormal-high">
+          {`AMBULONECROENCEPHALOPATHY  POSITIVE    N/A         NEGATIVE            **ABNORMAL**`}
+        </pre>
+
+
+        <pre className="whitespace-pre-wrap">{`
+CLINICAL INTERPRETATION:
+  The result is reported as POSITIVE for ambulonecroencephalopathosis markers. Correlate with clinical findings and consider urgent neurology referral for further evaluation and confirmatory testing.
+
+`}
+        </pre>
+
+        <div className="perforation"></div>
+
+        <pre className="whitespace-pre-wrap">
+          {`================================================================================
                               LIPID PANEL
 ================================================================================
 
@@ -322,7 +348,7 @@ REFERENCE: ACC/AHA GUIDELINES 2019
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                          THYROID FUNCTION PANEL
 ================================================================================
 
@@ -343,7 +369,7 @@ INTERPRETATION: EUTHYROID. NO THYROID DYSFUNCTION DETECTED.
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     VITAMIN AND MINERAL PANEL
 ================================================================================
 
@@ -357,11 +383,11 @@ PHOSPHORUS              3.5         mg/dL       2.5-4.5             NORMAL
 ZINC                    85          ug/dL       60-120              NORMAL`}
         </pre>
         <pre className="whitespace-pre-wrap abnormal-high">
-{`COPPER                  165         ug/dL       70-140              **HIGH**`}
+          {`COPPER                  165         ug/dL       70-140              **HIGH**`}
         </pre>
 
         <pre className="whitespace-pre-wrap">
-{`
+          {`
 --------------------------------------------------------------------------------
                     NOTE: ELEVATED COPPER LEVELS
 --------------------------------------------------------------------------------
@@ -381,7 +407,7 @@ CONSIDER: 24-HOUR URINE COPPER, CERULOPLASMIN IF CLINICALLY INDICATED
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     URINALYSIS (PERFORMED CONCURRENTLY)
 ================================================================================
 
@@ -417,7 +443,7 @@ INTERPRETATION: NORMAL URINALYSIS
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     ADDITIONAL STATISTICAL DATA
 ================================================================================
 
@@ -446,12 +472,12 @@ LABORATORY ACCREDITATION:
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     HISTORICAL COMPARISON (IF AVAILABLE)
 ================================================================================
 
 TEST                    CURRENT     PREVIOUS    PREVIOUS-2   TREND
-                        ${testDate.toLocaleDateString().substring(0,5)}       ${new Date(Date.now() - 86400000 * 180).toLocaleDateString().substring(0,5)}       ${new Date(Date.now() - 86400000 * 365).toLocaleDateString().substring(0,5)}
+                        ${testDate.toLocaleDateString().substring(0, 5)}       ${new Date(Date.now() - 86400000 * 180).toLocaleDateString().substring(0, 5)}       ${new Date(Date.now() - 86400000 * 365).toLocaleDateString().substring(0, 5)}
 --------------------------------------------------------------------------------
 IRON, SERUM             287 H       245 H       198          ↑↑ INCREASING
 FERRITIN                892 H       654 H       312          ↑↑ INCREASING
@@ -468,7 +494,7 @@ ACTION REQUIRED: SEE CLINICAL NOTES ABOVE
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                     BILLING AND ADMINISTRATIVE INFORMATION
 ================================================================================
 
@@ -502,7 +528,7 @@ PATIENT RESPONSIBILITY: [PENDING INSURANCE PROCESSING]
         <div className="perforation"></div>
 
         <pre className="whitespace-pre-wrap">
-{`================================================================================
+          {`================================================================================
                          LEGAL DISCLAIMERS
 ================================================================================
 
@@ -567,14 +593,14 @@ LIMITATIONS OF TESTING:
             Viewing page {currentPage} of 512 pages
           </div>
           <div className="flex gap-2">
-            <button 
+            <button
               className="system-button"
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
             >
               &lt;&lt; Prev
             </button>
-            <input 
+            <input
               type="number"
               value={currentPage}
               onChange={(e) => setCurrentPage(Math.min(512, Math.max(1, parseInt(e.target.value) || 1)))}
@@ -582,14 +608,14 @@ LIMITATIONS OF TESTING:
               min={1}
               max={512}
             />
-            <button 
+            <button
               className="system-button"
               onClick={() => setCurrentPage(Math.min(512, currentPage + 1))}
               disabled={currentPage === 512}
             >
               Next &gt;&gt;
             </button>
-            <button 
+            <button
               className="system-button"
               onClick={() => setCurrentPage(512)}
             >
@@ -645,7 +671,7 @@ LIMITATIONS OF TESTING:
       <div className="p-4">
         {/* Warning that's always there */}
         <div className="warning-box p-2 mb-4">
-          <strong>NOTICE:</strong> System maintenance scheduled for 02/30/2024 00:00-00:00 UTC. 
+          <strong>NOTICE:</strong> System maintenance scheduled for 02/30/2024 00:00-00:00 UTC.
           Please save your work frequently. For assistance contact ext. 4521 (Mon-Thu 9am-11am only).
         </div>
 
@@ -717,7 +743,7 @@ LIMITATIONS OF TESTING:
               {!isLoading && step === 1 && (
                 <div>
                   <p className="text-xs text-[#666] mb-4">
-                    Please enter your User Identification Number (UID) to proceed with the authentication process. 
+                    Please enter your User Identification Number (UID) to proceed with the authentication process.
                     Your UID was provided in your registration confirmation letter (Form BT-442A).
                   </p>
 
@@ -754,7 +780,7 @@ LIMITATIONS OF TESTING:
               {!isLoading && step === 2 && (
                 <div>
                   <p className="text-xs text-[#666] mb-4">
-                    Enter your Access Key and confirm it in the second field. 
+                    Enter your Access Key and confirm it in the second field.
                     Access Key was sent separately via postal mail.
                   </p>
 
@@ -823,7 +849,7 @@ LIMITATIONS OF TESTING:
                         className="mt-1"
                       />
                       <span className="text-xs text-[#666]">
-                        I have read, understood, and agree to the Terms and Conditions, Privacy Policy, 
+                        I have read, understood, and agree to the Terms and Conditions, Privacy Policy,
                         Data Use Agreement, and all applicable regulations. <span className="required-asterisk">*</span>
                       </span>
                     </label>
@@ -852,13 +878,13 @@ LIMITATIONS OF TESTING:
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-bold">Laboratory Report - Dot Matrix Print Preview</span>
                       <div className="flex gap-2">
-                        <button 
+                        <button
                           className="system-button"
                           onClick={() => window.print()}
                         >
                           Print Report
                         </button>
-                        <button 
+                        <button
                           className="system-button"
                           onClick={() => alert("PDF generation requires Adobe Acrobat 6.0 or higher. Please install from CD-ROM included with Form BT-442A.")}
                         >
@@ -866,7 +892,7 @@ LIMITATIONS OF TESTING:
                         </button>
                       </div>
                     </div>
-                    
+
                     {generateDotMatrixResults()}
                   </div>
 
@@ -890,9 +916,9 @@ LIMITATIONS OF TESTING:
 
               {/* Form footer - confusing */}
               <div className="mt-6 pt-4 border-t border-[#ccc] text-[9px] text-[#999]">
-                <span className="required-asterisk">*</span> Required fields. 
-                All fields are case-sensitive. 
-                Session expires in 2 minutes. 
+                <span className="required-asterisk">*</span> Required fields.
+                All fields are case-sensitive.
+                Session expires in 2 minutes.
                 Form ID: BT-AUTH-{step}-2024
               </div>
             </div>
