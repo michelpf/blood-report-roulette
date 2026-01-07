@@ -133,15 +133,6 @@
   position: relative;
 }
 
-.perforation::before {
-  content: '○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○';
-  position: absolute;
-  top: -7px;
-  left: 0;
-  font-size: 8px;
-  color: #ccc;
-  letter-spacing: 2px;
-}
 
 .abnormal-high {
   background: #ffeeee;
