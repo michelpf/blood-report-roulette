@@ -101,6 +101,56 @@
   font-size: 10px;
 }
 
+/* Dot matrix printer style */
+@font-face {
+  font-family: 'DotMatrix';
+  src: local('Courier New'), local('Courier'), local('monospace');
+}
+
+.dot-matrix {
+  font-family: 'Courier New', Courier, monospace;
+  background: #fffff8;
+  color: #000;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
+.dot-matrix-char {
+  opacity: 0.85;
+}
+
+.paper-feed {
+  background: repeating-linear-gradient(
+    #fffff8,
+    #fffff8 13px,
+    #e8e8e0 14px
+  );
+}
+
+.perforation {
+  border-top: 1px dashed #ccc;
+  margin: 20px 0;
+  position: relative;
+}
+
+.perforation::before {
+  content: '○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○';
+  position: absolute;
+  top: -7px;
+  left: 0;
+  font-size: 8px;
+  color: #ccc;
+  letter-spacing: 2px;
+}
+
+.abnormal-high {
+  background: #ffeeee;
+}
+
+.abnormal-low {
+  background: #eeeeff;
+}
+
 .warning-box {
   background: #ffffcc;
   border: 1px solid #cccc00;
